@@ -1,15 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-10">
+    <div ng-repeat="img in imgs" class="col-md-1">
       <!--Body content-->
-
-      <ul>
-        <li ng-repeat="img in imgs">
-          <img ng-src="{{img.link | smallThumbnail: 's'}}"></a>
-          <p>image id: {{img.id}}</p>
-        </li>
-      </ul>
-
+        <img ng-src="{{img.link | smallThumbnail: 's'}}"></a>
+        <p>image id: {{img.id}}</p>
     </div>
   </div>
 </div>
