@@ -5,7 +5,8 @@
 var redditPicsApp = angular.module('redditPicsApp', [
   'ngRoute',
   'redditPicsControllers',
-  'redditPicsFilters'
+  'redditPicsFilters',
+  'redditPicsAnimations'
 ]);
 
 redditPicsApp.config(['$routeProvider',

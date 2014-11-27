@@ -1,0 +1,35 @@
+body {
+  padding: 20px;
+}
+
+.reddit-img.ng-enter,
+.reddit-img.ng-leave,
+.reddit-img.ng-move {
+  -webkit-transition: 1s linear all;
+  -moz-transition: 1s linear all;
+  -o-transition: 1s linear all;
+  transition: 1s linear all;
+}
+
+
+.reddit-img.ng-enter,
+.reddit-img.ng-move {
+  opacity: 0;
+}
+
+.reddit-img.ng-move.ng-move-active,
+.reddit-img.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.reddit-img.ng-leave {
+  opacity: 1;
+}
+
+.reddit-img.ng-leave.ng-leave-active {
+  opacity: 0;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
