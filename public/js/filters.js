@@ -1,4 +1,4 @@
-angular.module('redditPicsFilters', []).filter('smallThumbnail', function() {
+angular.module('redditPicsFilters', []).filter('thumbnailSize', function() {
   return function(input, size) {
   	var str = input;
   	var i = input.lastIndexOf('.');
