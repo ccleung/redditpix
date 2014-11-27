@@ -1,4 +1,6 @@
-angular.module('redditPicsFilters', []).filter('thumbnailSize', function() {
+var redditPicsFilters = angular.module('redditPicsFilters', []);
+
+redditPicsFilters.filter('thumbnailSize', function() {
   return function(input, size) {
   	var str = input;
   	var i = input.lastIndexOf('.');
@@ -8,3 +10,11 @@ angular.module('redditPicsFilters', []).filter('thumbnailSize', function() {
     return str;
   };
 });
+
+redditPicsFilters.filter('redditUrl', function() {
+  return function(url) {
+  	var baseUrl = "https://reddit.com";
+    return baseUrl + url;
+  };
+});
+
