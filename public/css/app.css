@@ -2,7 +2,16 @@ body {
   padding: 20px;
 }
 
-.reddit-img.ng-enter,
+.reddit-img {
+  opacity: 1;
+}
+
+.reddit-img.ng-hide {
+  opacity: 0;
+}
+
+.reddit-img.ng-hide-add.ng-hide-add-active,
+.reddit-img.ng-hide-remove.ng-hide-remove-active,
 .reddit-img.ng-leave,
 .reddit-img.ng-move {
   -webkit-transition: 1s linear all;
@@ -12,24 +21,24 @@ body {
 }
 
 
-.reddit-img.ng-enter,
+/*.reddit-img.ng-enter,
 .reddit-img.ng-move {
   opacity: 0;
 }
 
 .reddit-img.ng-move.ng-move-active,
-.reddit-img.ng-enter.ng-enter-active {
+.reddit-img.ng-enter.ng-move-active {
   opacity: 1;
-}
+}*/
 
 .reddit-img.ng-leave {
-  opacity: 1;
+  opacity: 0;
 }
 
-.reddit-img.ng-leave.ng-leave-active {
+/*.reddit-img.ng-leave.ng-leave-active {
   opacity: 0;
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
-}
+}*/
 

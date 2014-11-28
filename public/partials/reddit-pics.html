@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <div ng-repeat="img in imgs" class="col-md-2 col-xs-6 reddit-img">
+    <div ng-repeat="img in imgs" class="col-md-2 col-xs-6 col-sm-4 reddit-img" ng-show="imageLoaded">
       <a href="{{img.link}}" data-lightbox="{{img.id}}" data-title="{{img.title}} <a href='{{img.reddit_comments | redditUrl}}'>reddit</a>">
-        <img ng-src="{{img.link | thumbnailSize: 'b'}}" class="thumbnail">
+        <img ng-src="{{img.link | thumbnailSize: 'b'}}" imageonload class="thumbnail" />
       </a>
     </div>
   </div>
