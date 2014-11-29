@@ -1,11 +1,11 @@
 <div class="container-fluid">
-	<div infinite-scroll='pictures.nextPage()' infinite-scroll-distance='0' infinite-scroll-disabled='pictures.busy'>
-		<div class="row">
-			<div ng-repeat="img in pictures.imgs" class="col-md-2 col-xs-6 col-sm-4 reddit-img" ng-show="imageLoaded">
-				<a href="{{img.link}}" data-lightbox="{{img.id}}" data-title="{{img.title}} <a href='{{img.reddit_comments | redditUrl}}'>reddit</a>">
-					<img ng-src="{{img.link | thumbnailSize: 'b'}}" imageonload class="thumbnail" />
-				</a>
-			</div>
-		</div>
-	</div>
+  <div infinite-scroll='pictures.nextPage()' infinite-scroll-distance='0' infinite-scroll-disabled='pictures.busy'>
+    <div class="row">
+      <div ng-repeat="img in pictures.imgs" class="col-md-2 col-xs-6 col-sm-4 reddit-img" ng-show="imageLoaded">
+        <a href="{{img.link}}" data-lightbox="{{img.id}}" data-title="{{img.title}} <a href='{{img.reddit_comments | redditUrl}}'>reddit</a>">
+          <img ng-src="{{img.link | thumbnailSize: 'b'}}" imageonload class="thumbnail" />
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
