@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div infinite-scroll='pictures.nextPage()' infinite-scroll-distance='0' infinite-scroll-disabled='pictures.busy'>
     <div class="row">
       <div ng-repeat="img in pictures.imgs" class="col-md-2 col-xs-6 col-sm-4 reddit-img" ng-show="imageLoaded">
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div id="spinner-div" class="col-xs-12">
       <span us-spinner="{radius:30, width:10, length: 20}" spinner-key="spinner-1"></span>
     </div>
  </div>

@@ -22,6 +22,7 @@ redditPicsControllers.directive('imageonload', function() {
               {
                 scope.pictures.busy = false;
                 scope.pictures.stopSpinner();
+                scope.pictures.addClassToSpinnerDiv();
               }
               scope.$apply('imageLoaded=true');
             }
@@ -44,12 +45,30 @@ redditPicsControllers.factory('Pictures', ['$http', 'usSpinnerService', function
     this.imagesLoaded = 0;
     this.startSpinner = function() { return usSpinnerService.spin('spinner-1'); }
     this.stopSpinner = function() { return usSpinnerService.stop('spinner-1'); }
+    this.addClassToSpinnerDiv = function() { 
+      var spinnerDiv = document.getElementById('spinner-div');
+      console.log(spinnerDiv.className);
+      if (spinnerDiv.className != "col-xs-12") {
+        spinnerDiv.className = "col-xs-12";
+      }
+    }
+    this.removeClassFromSpinnerDiv = function() { 
+      var spinnerDiv = document.getElementById('spinner-div');
+      console.log(spinnerDiv.className);
+      if (spinnerDiv.className == "col-xs-12") {
+        spinnerDiv.className = "";
+      }
+    }
   };
 
   Pictures.prototype.nextPage = function() {
     if (this.busy) return;
     this.busy = true;
     this.startSpinner();
+
+    if (this.imgs.length <= 0) {
+      this.removeClassFromSpinnerDiv();
+    }
 
     var url = "https://api.imgur.com/3/gallery/r/aww/top/day/" + this.index;
     $http.defaults.headers.common.Authorization = "Client-ID 46ffdf043d06c64";
