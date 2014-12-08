@@ -7,7 +7,18 @@ var redditPicsControllers = angular.module('redditPicsControllers', ['infinite-s
 redditPicsControllers.controller('RedditPicsCtrl', ['$scope', 'Pictures',
 
   function($scope, Pictures) {
-    $scope.pictures = new Pictures();
+    $scope.subreddits = [
+      'aww',
+      'pics',
+      'funny'
+    ];
+    $scope.CurrentSubReddit = $scope.subreddits[0];
+    $scope.pictures = new Pictures($scope.CurrentSubReddit);
+    $scope.getSubRedditData = function(NewSubReddit) {
+      // reset index and call next page
+      $scope.pictures = new Pictures(NewSubReddit);
+      $scope.pictures.nextPage();
+    }
   }]);
 
 redditPicsControllers.directive('imageonload', function() {
@@ -38,23 +49,22 @@ redditPicsControllers.directive('imageonload', function() {
 });
 
 redditPicsControllers.factory('Pictures', ['$http', 'usSpinnerService', function($http, usSpinnerService) {
-  var Pictures = function() {
+  var Pictures = function(subreddit) {
     this.imgs = [];
     this.busy = false;
     this.index = 0;
     this.imagesLoaded = 0;
+    this.subreddit = subreddit;
     this.startSpinner = function() { return usSpinnerService.spin('spinner-1'); }
     this.stopSpinner = function() { return usSpinnerService.stop('spinner-1'); }
     this.addClassToSpinnerDiv = function() { 
       var spinnerDiv = document.getElementById('spinner-div');
-      console.log(spinnerDiv.className);
       if (spinnerDiv.className != "col-xs-12") {
         spinnerDiv.className = "col-xs-12";
       }
     }
     this.removeClassFromSpinnerDiv = function() { 
       var spinnerDiv = document.getElementById('spinner-div');
-      console.log(spinnerDiv.className);
       if (spinnerDiv.className == "col-xs-12") {
         spinnerDiv.className = "";
       }
@@ -70,7 +80,7 @@ redditPicsControllers.factory('Pictures', ['$http', 'usSpinnerService', function
       this.removeClassFromSpinnerDiv();
     }
 
-    var url = "https://api.imgur.com/3/gallery/r/aww/top/day/" + this.index;
+    var url = "https://api.imgur.com/3/gallery/r/" + this.subreddit + "/top/day/" + this.index;
     $http.defaults.headers.common.Authorization = "Client-ID 46ffdf043d06c64";
     $http.get(url).success(function(data) {
       var items = data.data;
