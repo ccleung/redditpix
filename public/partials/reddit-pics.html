@@ -1,8 +1,5 @@
 <div class="container-fluid">
    <select ng-model="CurrentSubReddit" ng-options="subreddit for subreddit in subreddits" ng-change="getSubRedditData(CurrentSubReddit)"></select>
-<span>
-  value: {{CurrentSubReddit}}
-</span>
   <div infinite-scroll='pictures.nextPage()' infinite-scroll-distance='0' infinite-scroll-disabled='pictures.busy'>
     <div class="row">
       <div ng-repeat="img in pictures.imgs" class="col-md-2 col-xs-6 col-sm-4 reddit-img" ng-show="imageLoaded">
